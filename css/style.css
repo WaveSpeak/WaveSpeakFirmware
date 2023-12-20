@@ -1,0 +1,90 @@
+.arc {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border-radius: 50%;
+    animation: spin ease 1.4s infinite both;
+}
+.arc:nth-child(1) {
+    background: #e31d28;
+    width: 490px;
+    height: 490px;
+    margin-left: -245px;
+    margin-top: -245px;
+    clip-path: inset(50% 0 0 0);
+    animation-delay: 1.2s;
+}
+.arc:nth-child(2) {
+    background: #ed8c3d;
+    width: 420px;
+    height: 420px;
+    margin-left: -210px;
+    margin-top: -210px;
+    clip-path: inset(50% 0 0 0);
+    animation-delay: 1s;
+}
+.arc:nth-child(3) {
+    background: #fcd234;
+    width: 350px;
+    height: 350px;
+    margin-left: -175px;
+    margin-top: -175px;
+    clip-path: inset(50% 0 0 0);
+    animation-delay: 0.8s;
+}
+.arc:nth-child(4) {
+    background: #3e9965;
+    width: 280px;
+    height: 280px;
+    margin-left: -140px;
+    margin-top: -140px;
+    clip-path: inset(50% 0 0 0);
+    animation-delay: 0.6s;
+}
+.arc:nth-child(5) {
+    background: #295167;
+    width: 210px;
+    height: 210px;
+    margin-left: -105px;
+    margin-top: -105px;
+    clip-path: inset(50% 0 0 0);
+    animation-delay: 0.4s;
+}
+.arc:nth-child(6) {
+    background: #492245;
+    width: 140px;
+    height: 140px;
+    margin-left: -70px;
+    margin-top: -70px;
+    clip-path: inset(50% 0 0 0);
+    animation-delay: 0.2s;
+}
+.arc:nth-child(7) {
+    background: #fdfad8;
+    width: 70px;
+    height: 70px;
+    margin-left: -35px;
+    margin-top: -35px;
+    clip-path: inset(50% 0 0 0);
+    animation-delay: 0s;
+}
+#rainbow {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 490px;
+    height: 490px;
+}
+@keyframes spin {
+    from {
+        transform: rotateZ(0deg);
+   }
+    to {
+        transform: rotateZ(360deg);
+   }
+}
+body {
+    background: #fdfad8;
+    overflow: hidden;
+}

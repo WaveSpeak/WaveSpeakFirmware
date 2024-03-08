@@ -19,7 +19,8 @@
     "windows": [
       {
         "title": "wavespeakfirmware",
-        "width": 800,
+        "resizable": false,
+        "width": 1024,
         "height": 600
       }
     ],

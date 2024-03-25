@@ -1,5 +1,7 @@
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
+use tauri::Manager;
+use tauri::{Position, Window, WindowBuilder};
 
 // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
 #[tauri::command]
@@ -7,9 +9,33 @@ fn greet(name: &str) -> String {
     format!("Hello, {}! You've been greeted from Rust!", name)
 }
 
+fn move_window_to_other_monitor(window: &Window, i: usize) -> tauri::Result<()> {
+    let monitors = window.available_monitors()?;
+    let monitor = monitors.get(i).ok_or(tauri::Error::CreateWindow)?;
+
+    let pos = monitor.position();
+
+    window.set_position(Position::Physical(
+        tauri::PhysicalPosition{
+            x: pos.x,
+            y: 0
+        })
+    )?;
+
+    window.center()?;
+    Ok(())
+}
+
 fn main() {
-    tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![greet])
-        .run(tauri::generate_context!())
+    let app = tauri::Builder::default()
+        .build(tauri::generate_context!())
         .expect("error while running tauri application");
+
+    let window = app.get_window("main").expect("Cannot get main window");
+
+    move_window_to_other_monitor(&window, 1).expect("Cannot move window to other monitor");
+
+    app.run(|_app_handle, _event| {
+        let _ = window;
+    });
 }

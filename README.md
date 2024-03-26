@@ -1,6 +1,6 @@
-# Tauri + Vanilla
+# WaveSpeak Tablet Software
 
-This template should help get you started developing with Tauri in vanilla HTML, CSS and Javascript.
+This repo contains the tauri project for the tablet software.
 
 ## Recommended IDE Setup
 

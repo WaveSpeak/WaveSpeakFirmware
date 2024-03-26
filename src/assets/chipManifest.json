@@ -1,0 +1,134 @@
+[
+    {
+        "id" : 0,
+        "word" : "hello",
+        "speechType" : "",
+        "path" : "/assets/chips/placeholder.png"
+    },
+    {
+        "id" : 1,
+        "word" : "goodbye",
+        "speechType" : "",
+        "path" : "/assets/chips/yay.png"
+    },
+    {
+        "id" : 2,
+        "word" : "yes",
+        "speechType" : "",
+        "path" : "/assets/chips/placeholder.png"
+    },
+    {
+        "id" : 3,
+        "word" : "no",
+        "speechType" : "",
+        "path" : "/assets/chips/placeholder.png"
+    },
+    {
+        "id" : 4,
+        "word" : "stop",
+        "speechType" : "",
+        "path" : "/assets/chips/placeholder.png"
+    },
+    {
+        "id" : 5,
+        "word" : "start",
+        "speechType" : "",
+        "path" : "/assets/chips/placeholder.png"
+    },
+    {
+        "id" : 6,
+        "word" : "go",
+        "speechType" : "",
+        "path" : "/assets/chips/placeholder.png"
+    },
+    {
+        "id" : 7,
+        "word" : "back",
+        "speechType" : "",
+        "path" : "/assets/chips/placeholder.png"
+    },
+    {
+        "id" : 8,
+        "word" : "forward",
+        "speechType" : "",
+        "path" : "/assets/chips/placeholder.png"
+    },
+    {
+        "id" : 9,
+        "word" : "left",
+        "speechType" : "",
+        "path" : "/assets/chips/placeholder.png"
+    },
+    {
+        "id" : 10,
+        "word" : "right",
+        "speechType" : "",
+        "path" : "/assets/chips/placeholder.png"
+    },
+    {
+        "id" : 11,
+        "word" : "up",
+        "speechType" : "",
+        "path" : "/assets/chips/placeholder.png"
+    },
+    {
+        "id" : 12,
+        "word" : "down",
+        "speechType" : "",
+        "path" : "/assets/chips/placeholder.png"
+    },
+    {
+        "id" : 13,
+        "word" : "on",
+        "speechType" : "",
+        "path" : "/assets/chips/placeholder.png"
+    },
+    {
+        "id" : 14,
+        "word" : "off",
+        "speechType" : "",
+        "path" : "/assets/chips/placeholder.png"
+    },
+    {
+        "id" : 15,
+        "word" : "word?",
+        "speechType" : "",
+        "path" : "/assets/chips/placeholder.png"
+    },
+    {
+        "id" : 16,
+        "word" : "what?",
+        "speechType" : "",
+        "path" : "/assets/chips/placeholder.png"
+    },
+    {
+        "id" : 17,
+        "word" : "where?",
+        "speechType" : "",
+        "path" : "/assets/chips/placeholder.png"
+    },
+    {
+        "id" : 18,
+        "word" : "when?",
+        "speechType" : "",
+        "path" : "/assets/chips/placeholder.png"
+    },
+    {
+        "id" : 19,
+        "word" : "how?",
+        "speechType" : "",
+        "path" : "/assets/chips/placeholder.png"
+    },
+    {
+        "id" : 20,
+        "word" : "why?",
+        "speechType" : "",
+        "path" : "/assets/chips/placeholder.png"
+    },
+    {
+        "id" : 21,
+        "word" : "who?",
+        "speechType" : "",
+        "path" : "/assets/chips/placeholder.png"
+    }
+]

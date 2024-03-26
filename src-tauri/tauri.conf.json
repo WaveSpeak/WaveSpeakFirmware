@@ -16,7 +16,7 @@
         "open": true
       },
       "window": {
-        "setFullscreen": true
+        "setFullscreen": false
       }
     },
     "windows": [

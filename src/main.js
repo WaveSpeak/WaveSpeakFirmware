@@ -22,15 +22,9 @@ function prevPage() {
 }
 
 function pushQueue (button) {
-  let buttonElement = button.getElement();
-  sayQueue.push(button.word);
-  buttonElement.addEventListener("click", () => {
-    speak(button.word);
-  })
-  buttonElement.id = undefined;
-  buttonElement.appendChild(button.img);
+  let buttonElement = button.cloneNode(true);
+  //TODO: Make button call speak(msg : String) on click where button.word is the msg to be spoken
   visor.appendChild(buttonElement);
-  generateButtonGrid(); // JavaScript, I would like to keep my fucking image elements in the grid without regenerating it.
 }
 
 function clearQueue() {
@@ -44,6 +38,7 @@ async function debugInfo() {
 }
 
 async function speak(msg) {
+  console.log(msg);
   await invoke("say", { text: msg });
 }
 
@@ -52,7 +47,7 @@ function generateButtonGrid() {
   for (let i = 0 + 14*(page-1); i < 14*page; i++) {
     let buttonElement = buttonArray[i].getElement();
     buttonElement.addEventListener("click", () => {
-      pushQueue(buttonArray[i]);
+      pushQueue(buttonElement);
     })
     grid.appendChild(buttonElement);
   }
@@ -61,7 +56,7 @@ function generateButtonGrid() {
 
 fetch("assets/chipManifest.json").then (res => res.json()).then (json => {
   for (let i = 0; i < json.length; i++) {
-    buttonArray.push(new Button(json[i]));
+    buttonArray.push(new Button(json[i], false));
   }
   generateButtonGrid();
 })

@@ -28,9 +28,9 @@ export class Button {
     }
     getElement() {
         let button = document.createElement("button");
+        button.id = this.id;
         button.textContent = this.word;
         button.appendChild(this.img);
-        button.id = this.id;
         return button;
     }
 }

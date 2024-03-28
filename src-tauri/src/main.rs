@@ -3,6 +3,8 @@
 
 use tauri::Manager;
 use tauri::{Position, Window};
+use std::{default, io};
+use std::{thread, time};
 
 // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
 #[tauri::command]
@@ -12,27 +14,33 @@ fn software_version() -> String {
 
 #[tauri::command]
 fn build_type() -> String {
-
-    if cfg!(debug_assertions){
+    if cfg!(debug_assertions) {
         return "debug".to_string();
-    }
-    else {
+    } else {
         return "release".to_string();
     }
 }
 
+fn get_tts(text: &String) {
+}
+
+#[tauri::command]
+fn say(text: String) {
+    let _ = get_tts(&text);
+    println!("said: {}", &text);
+}
+
+#[allow(dead_code)] //TODO: Remove before prod
 fn move_window_to_other_monitor(window: &Window, i: usize) -> tauri::Result<()> {
     let monitors = window.available_monitors()?;
     let monitor = monitors.get(i).ok_or(tauri::Error::CreateWindow)?;
 
     let pos = monitor.position();
 
-    window.set_position(Position::Physical(
-        tauri::PhysicalPosition{
-            x: pos.x,
-            y: 0
-        })
-    )?;
+    window.set_position(Position::Physical(tauri::PhysicalPosition {
+        x: pos.x,
+        y: 0,
+    }))?;
 
     window.center()?;
     Ok(())
@@ -40,7 +48,11 @@ fn move_window_to_other_monitor(window: &Window, i: usize) -> tauri::Result<()> 
 
 fn main() {
     let app = tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![software_version, build_type])
+        .invoke_handler(tauri::generate_handler![
+            software_version,
+            build_type,
+            say
+        ])
         .build(tauri::generate_context!())
         .expect("error while running tauri application");
 

@@ -10,7 +10,15 @@ export class Button {
         this.img.src = this.path;
     }*/
 
-    constructor (json) {
+    constructor (json, isSpecial = false) {
+        if (isSpecial) {
+            this.word = "9921"
+            this.speechType = "special"
+            this.id = 9999999999 //There are a lot of words, might wanna play it safe.
+            this.path = "/assets/chips/placeholder.png"
+            this.img = new Image();
+            this.img.src = this.path;
+        }
         this.word = json.word;
         this.speechType = json.speechType;
         this.id = json.id;
@@ -19,6 +27,10 @@ export class Button {
         this.img.src = this.path;
     }
     getElement() {
-        return this.img;
+        let button = document.createElement("button");
+        button.textContent = this.word;
+        button.appendChild(this.img);
+        button.id = this.id;
+        return button;
     }
 }

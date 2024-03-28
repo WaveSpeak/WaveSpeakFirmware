@@ -12,6 +12,7 @@ body {
   position: absolute;
   color: #ffffff;
   mix-blend-mode: difference;
+  font-size: 5px;
 }
 
 
@@ -23,6 +24,8 @@ body {
 
 .visor-container {
   background-color: aqua;
+  display: flex;
+  flex-direction: row;
   height: 148px;
   width: 100%;
   margin-bottom: 35px;

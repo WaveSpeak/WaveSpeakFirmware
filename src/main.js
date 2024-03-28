@@ -4,39 +4,59 @@ import { Button } from "./js/button.js";
 let verTxt = document.getElementById("software-version");
 let buildType = document.getElementById("build-type");
 let grid = document.getElementById("button-grid");
+let visor = document.getElementById("visor-container");
 
 let page = 1;
 
 let buttonArray = [];
+let sayQueue = [];
+
+function nextPage() {
+  page++;
+  generateButtonGrid();
+}
+
+function prevPage() {
+  page--;
+  generateButtonGrid();
+}
+
+function pushQueue (button) {
+  let buttonElement = button.getElement();
+  sayQueue.push(button.word);
+  buttonElement.addEventListener("click", () => {
+    speak(button.word);
+  })
+  buttonElement.id = undefined;
+  buttonElement.appendChild(button.img);
+  visor.appendChild(buttonElement);
+  generateButtonGrid(); // JavaScript, I would like to keep my fucking image elements in the grid without regenerating it.
+}
+
+function clearQueue() {
+  sayQueue = [];
+  visor.innerHTML = "";
+}
 
 async function debugInfo() {
   buildType.textContent = "Build: " + await invoke("build_type");
   verTxt.textContent = "Software Version: " + await invoke("software_version");
 }
 
-function speak(msg) {
-  var msgUtt = new SpeechSynthesisUtterance();
-  var voices = window.speechSynthesis.getVoices();
-  msgUtt.voice = voices[12]; 
-  msgUtt.volume = 1; // From 0 to 1
-  msgUtt.rate = 2; // From 0.1 to 10
-  msgUtt.pitch = 5; // From 0 to 2
-  msgUtt.text = msg;
-  window.speechSynthesis.speak(msgUtt);
+async function speak(msg) {
+  await invoke("say", { text: msg });
 }
 
 function generateButtonGrid() {
   grid.innerHTML = "";
-  for (let i = 0 + 21*(page-1); i < 21*page; i++) {
-    const button = document.createElement("button");
-    button.addEventListener("click", () => {
-      speak(buttonArray[i].word);
+  for (let i = 0 + 14*(page-1); i < 14*page; i++) {
+    let buttonElement = buttonArray[i].getElement();
+    buttonElement.addEventListener("click", () => {
+      pushQueue(buttonArray[i]);
     })
-    button.textContent = buttonArray[i].word;
-    button.appendChild(buttonArray[i].getElement());
-    button.id = i;
-    grid.appendChild(button);
+    grid.appendChild(buttonElement);
   }
+
 }
 
 fetch("assets/chipManifest.json").then (res => res.json()).then (json => {

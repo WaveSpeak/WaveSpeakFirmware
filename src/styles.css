@@ -10,10 +10,13 @@ body {
 
 .debug-info {
   position: absolute;
+  width: 100%;
   color: #ffffff;
   mix-blend-mode: difference;
-  font-size: 5px;
+  font-size: 8px;
+  text-align: right;
 }
+
 
 
 .container {

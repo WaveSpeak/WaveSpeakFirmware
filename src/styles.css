@@ -14,7 +14,7 @@ body {
   color: #ffffff;
   mix-blend-mode: difference;
   font-size: 8px;
-  text-align: right;
+  text-align: center;
 }
 
 
@@ -32,6 +32,7 @@ body {
   height: 148px;
   width: 100%;
   margin-bottom: 35px;
+  align-items: flex-end;
 }
 
 .button-grid {

@@ -3,6 +3,8 @@ import { Button } from "./js/button.js";
 
 let verTxt = document.getElementById("software-version");
 let buildType = document.getElementById("build-type");
+let innerResolution = document.getElementById("inner-resolution");
+let screenResolution = document.getElementById("screen-resolution");
 let grid = document.getElementById("button-grid");
 let visor = document.getElementById("visor-container");
 
@@ -46,6 +48,8 @@ function clearQueue() {
 async function debugInfo() {
   buildType.textContent = "Build: " + await invoke("build_type");
   verTxt.textContent = "Software Version: " + await invoke("software_version");
+  innerResolution.textContent = `Screen Resolution: ${window.innerWidth}x${window.innerHeight}`
+  screenResolution.textContent = `Screen Resolution: ${screen.width}x${screen.height}`
 }
 
 async function speak(msg) {
@@ -125,6 +129,9 @@ fetch("assets/chipManifest.json").then (res => res.json()).then (json => {
     }
     buttonArray.push(new Button(json[i]));
   }
+  pushQueue(buttonArray[0].getElement());
+  pushQueue(buttonArray[1].getElement());
+  pushQueue(buttonArray[2].getElement());
   generateButtonGrid();
 })
 

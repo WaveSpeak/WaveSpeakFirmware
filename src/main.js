@@ -60,7 +60,7 @@ async function speak(msg) {
 }
 
 function speakSayQueue() {
-  speak(sayQueue.toString());
+  speak(sayQueue.join(" "));
 }
 
 function decorateSpecialButton(button) {

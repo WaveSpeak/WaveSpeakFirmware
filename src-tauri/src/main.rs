@@ -5,6 +5,8 @@ use tauri::Manager;
 use tauri::{Position, Window};
 use std::{default, io};
 use std::{thread, time};
+use coqui_tts::Synthesizer;
+
 
 // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
 #[tauri::command]
@@ -47,6 +49,10 @@ fn move_window_to_other_monitor(window: &Window, i: usize) -> tauri::Result<()> 
 }
 
 fn main() {
+    let mut TTS_ENGINE:Synthesizer = Synthesizer::new("Tacotron", false);
+    
+    TTS_ENGINE.tts("hello!");
+
     let app = tauri::Builder::default()
         .invoke_handler(tauri::generate_handler![
             software_version,

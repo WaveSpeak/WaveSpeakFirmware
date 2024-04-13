@@ -5,7 +5,7 @@ let verTxt = document.getElementById("software-version");
 let buildType = document.getElementById("build-type");
 let innerResolution = document.getElementById("inner-resolution");
 let screenResolution = document.getElementById("screen-resolution");
-let grid = document.getElementById("button-grid");
+let gridElement = document.getElementById("button-grid");
 let visor = document.getElementById("visor-container");
 
 let page = 1;
@@ -53,6 +53,9 @@ async function debugInfo() {
 }
 
 async function speak(msg) {
+  if (msg == "") {
+    return;
+  }
   var utterance = new SpeechSynthesisUtterance(msg);
   window.speechSynthesis.speak(utterance);
   console.log(msg);
@@ -87,7 +90,7 @@ function decorateSpecialButton(button) {
       })
       break;
     default:
-      console.error(`Button ${button.word} is not a special button that has functionality.
+      console.error(`Button "${button.word}" is not a special button that has functionality.
       Is it spelled correctly? Is it in decorateSpecialButton()?
       This chip/button has been added but has no functionality.`);
       buttonElement.children[0].src = "/assets/chips/missing.png";
@@ -100,7 +103,7 @@ function decorateSpecialButton(button) {
 
 function generateButtonGrid() {
   console.log(actionArray);
-  grid.innerHTML = "";
+  gridElement.innerHTML = "";
   let startIndex = (page - 1) * 14;
   let endIndex = page * 14;
   console.log(`start: ${startIndex}, end: ${endIndex}`);
@@ -110,14 +113,14 @@ function generateButtonGrid() {
       buttonElement.addEventListener("click", () => {
         pushQueue(buttonElement);
       })
-      grid.appendChild(buttonElement);
+      gridElement.appendChild(buttonElement);
     } else {
       let placeHolder = document.createElement("button");
-      grid.appendChild(placeHolder);
+      gridElement.appendChild(placeHolder);
     }
   }
   for (let i = 0; i < actionArray.length; i++) {
-    grid.appendChild(decorateSpecialButton(actionArray[i]));
+    gridElement.appendChild(decorateSpecialButton(actionArray[i]));
   }
 }
 

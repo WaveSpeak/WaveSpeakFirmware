@@ -24,3 +24,8 @@ dist-ssr
 *.sln
 *.sw?
 venv/*
+
+src/assets/chips/*.png
+
+#allowed
+!/src/assets/chips/placeholder.png

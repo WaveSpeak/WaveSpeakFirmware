@@ -3,8 +3,12 @@
 
 use tauri::Manager;
 use tauri::{Position, Window};
-use coqui_tts::Synthesizer;
+use std::fs;
+use std::io::{self, Write};
 
+use coqui_tts::Synthesizer;
+use rodio::buffer::SamplesBuffer;
+use rodio::{OutputStream, Sink};
 // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
 #[tauri::command]
 fn software_version() -> String {
@@ -21,6 +25,26 @@ fn build_type() -> String {
 }
 
 fn get_tts(text: &String) {
+    let mut synth = Synthesizer::new("tts_models/en/ljspeech/tacotron2-DDC", false);  
+    get_tts(&"hello".to_string());
+    let (_stream, stream_handle) = OutputStream::try_default().unwrap();
+    let sink = Sink::try_new(&stream_handle).unwrap();
+    let audio = synth.tts(&text);
+    let rate = synth.sample_rate();
+    wav::write(
+        wav::Header::new(wav::WAV_FORMAT_IEEE_FLOAT, 1, rate as u32, 32),
+        &wav::BitDepth::ThirtyTwoFloat(audio.clone()),
+        &mut fs::OpenOptions::new()
+            .create(true)
+            .write(true)
+            .open("current.wav")
+            .unwrap(),
+    )
+    .unwrap();
+    // break;
+    println!("playing audio at rate {}", rate);
+    sink.append(SamplesBuffer::new(1, rate as u32, audio.clone()));
+    sink.sleep_until_end();
 }
 
 #[tauri::command]

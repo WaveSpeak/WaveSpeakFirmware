@@ -137,5 +137,5 @@ fetch("assets/chipManifest.json").then (res => res.json()).then (json => {
 })
 
 window.addEventListener("DOMContentLoaded", () => {
-  debugInfo();
+  //debugInfo();
 });

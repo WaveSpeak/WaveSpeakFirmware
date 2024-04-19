@@ -56,8 +56,6 @@ async function speak(msg) {
   if (msg == "") {
     return;
   }
-  var utterance = new SpeechSynthesisUtterance(msg);
-  window.speechSynthesis.speak(utterance);
   console.log(msg);
   await invoke("say", { text: msg });
 }

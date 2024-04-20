@@ -1,14 +1,27 @@
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
+#[macro_use]
+extern crate lazy_static;
+
+use std::sync::Mutex;
+use std::fs;
+use std::thread;
+
 use tauri::Manager;
 use tauri::{Position, Window};
-use std::fs;
-use std::io::{self, Write};
+
 
 use coqui_tts::Synthesizer;
+
 use rodio::buffer::SamplesBuffer;
 use rodio::{OutputStream, Sink};
+
+
+lazy_static! {
+    static ref SYNTHESIZER : Mutex<Synthesizer> = Mutex::new(Synthesizer::new("tts_models/en/ljspeech/tacotron2-DDC", false));
+}
+
 // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
 #[tauri::command]
 fn software_version() -> String {
@@ -24,9 +37,8 @@ fn build_type() -> String {
     }
 }
 
-fn get_tts(text: &String) {
-    let mut synth = Synthesizer::new("tts_models/en/ljspeech/tacotron2-DDC", false);  
-    get_tts(&"hello".to_string());
+unsafe fn get_tts(text: &String) {
+    let synth: &mut Synthesizer = &mut *SYNTHESIZER.lock().unwrap();
     let (_stream, stream_handle) = OutputStream::try_default().unwrap();
     let sink = Sink::try_new(&stream_handle).unwrap();
     let audio = synth.tts(&text);
@@ -49,8 +61,12 @@ fn get_tts(text: &String) {
 
 #[tauri::command]
 fn say(text: String) {
-    get_tts(&text);
-    println!("said: {}", &text);
+    println!("generating audio: {}", &text);
+    unsafe {
+        thread::spawn(move || {
+            get_tts(&text);
+        });
+    }
 }
 
 #[allow(dead_code)] //TODO: Remove before prod
@@ -69,6 +85,10 @@ fn move_window_to_other_monitor(window: &Window, i: usize) -> tauri::Result<()> 
     Ok(())
 }
 fn main() {
+    unsafe {
+        get_tts(&"Wavespeak Tablet".to_string());
+    }
+    
     let app = tauri::Builder::default()
         .invoke_handler(tauri::generate_handler![
             software_version,

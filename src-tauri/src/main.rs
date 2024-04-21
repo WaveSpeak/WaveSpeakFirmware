@@ -5,7 +5,6 @@
 extern crate lazy_static;
 
 use std::sync::Mutex;
-use std::fs;
 use std::thread;
 
 use tauri::Manager;
@@ -19,7 +18,7 @@ use rodio::{OutputStream, Sink};
 
 
 lazy_static! {
-    static ref SYNTHESIZER : Mutex<Synthesizer> = Mutex::new(Synthesizer::new("tts_models/en/ljspeech/tacotron2-DDC", false));
+    static ref SYNTHESIZER : Mutex<Synthesizer> = Mutex::new(Synthesizer::new("tts_models/en/ljspeech/tacotron2-DDC_ph", false));
 }
 
 // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command

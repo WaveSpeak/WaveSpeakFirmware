@@ -1,7 +1,7 @@
 [
     {
     "id": 0,
-    "word": "00",
+    "word": "zero zero",
     "speechType": "",
     "path": "/assets/chips/00.png"
   },
@@ -76,12 +76,6 @@
     "word": "Action",
     "speechType": "",
     "path": "/assets/chips/Action.png"
-  },
-  {
-    "id": 13,
-    "word": "actionPlaceholder",
-    "speechType": "",
-    "path": "/assets/chips/actionPlaceholder.png"
   },
   {
     "id": 14,
@@ -18280,65 +18274,35 @@
     "word": "Zzzzzzzz",
     "speechType": "",
     "path": "/assets/chips/Zzzzzzzz.png"
+  }, 
+  {
+      "word" : "previousPage",
+      "speechType" : "",
+      "path" : "/assets/chips/actionPlaceholder.png",
+      "isSpecial" : true
   },
-    {
-        "word" : "previousPage",
-        "speechType" : "",
-        "path" : "/assets/chips/actionPlaceholder.png",
-        "isSpecial" : true
-    },
-    {
-        "word" : "nextPage",
-        "speechType" : "",
-        "path" : "/assets/chips/actionPlaceholder.png",
-        "isSpecial" : true
-    },
-    {
-        "word" : "clearQueue",
-        "speechType" : "",
-        "path" : "/assets/chips/actionPlaceholder.png",
-        "isSpecial" : true
-    },
-    {
-        "word" : "speak",
-        "speechType" : "",
-        "path" : "/assets/chips/actionPlaceholder.png",
-        "isSpecial" : true
-    },
-    {
-        "word" : "stop",
-        "speechType" : "",
-        "path" : "/assets/chips/actionPlaceholder.png",
-        "isSpecial" : true
-    },
-    {
-        "word" : "previousPage",
-        "speechType" : "",
-        "path" : "/assets/chips/actionPlaceholder.png",
-        "isSpecial" : true
-    },
-    {
-        "word" : "nextPage",
-        "speechType" : "",
-        "path" : "/assets/chips/actionPlaceholder.png",
-        "isSpecial" : true
-    },
-    {
-        "word" : "clearQueue",
-        "speechType" : "",
-        "path" : "/assets/chips/actionPlaceholder.png",
-        "isSpecial" : true
-    },
-    {
-        "word" : "speak",
-        "speechType" : "",
-        "path" : "/assets/chips/actionPlaceholder.png",
-        "isSpecial" : true
-    },
-    {
-        "word" : "stop",
-        "speechType" : "",
-        "path" : "/assets/chips/actionPlaceholder.png",
-        "isSpecial" : true
-    }
+  {
+      "word" : "nextPage",
+      "speechType" : "",
+      "path" : "/assets/chips/actionPlaceholder.png",
+      "isSpecial" : true
+  },
+  {
+      "word" : "clearQueue",
+      "speechType" : "",
+      "path" : "/assets/chips/actionPlaceholder.png",
+      "isSpecial" : true
+  },
+  {
+      "word" : "speak",
+      "speechType" : "",
+      "path" : "/assets/chips/actionPlaceholder.png",
+      "isSpecial" : true
+  },
+  {
+      "word" : "stop",
+      "speechType" : "",
+      "path" : "/assets/chips/actionPlaceholder.png",
+      "isSpecial" : true
+  }
 ]

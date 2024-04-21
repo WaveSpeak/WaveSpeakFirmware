@@ -56,8 +56,7 @@ async function speak(msg) {
   if (msg == "") {
     return;
   }
-  console.log(msg);
-  await invoke("say", { text: msg });
+  await invoke("say", { text: cleanSpeechText(msg) });
 }
 
 async function stop_tts() {
@@ -65,8 +64,8 @@ async function stop_tts() {
 }
 
 function cleanSpeechText(text) {
-  temp = "";
-  temp = text[i].replace(/[0-9]/g, "");
+  let temp = "";
+  temp = text.replace(/[0-9]/g, "");
   return temp + ".";
 }
 
@@ -115,11 +114,9 @@ function decorateSpecialButton(button) {
 }
 
 function generateButtonGrid() {
-  console.log(actionArray);
   gridElement.innerHTML = "";
   let startIndex = (page - 1) * 14;
   let endIndex = page * 14;
-  console.log(`start: ${startIndex}, end: ${endIndex}`);
   for (let i = startIndex; i < endIndex; i++) { 
     if (i < buttonArray.length) {
       let buttonElement = buttonArray[i].getElement();
@@ -154,3 +151,13 @@ fetch("assets/chipManifest.json").then (res => res.json()).then (json => {
 window.addEventListener("DOMContentLoaded", () => {
   //debugInfo();
 });
+
+window.onkeydown = (e) => {
+  const keyMappings = {
+        'q': 0, 'w': 1, 'e': 2, 'r': 3, 't': 4, 'y': 5, 'u': 6,
+        'a': 7, 's': 8, 'd': 9, 'f': 10, 'g': 11, 'h': 12, 'j': 13,
+        'z': 14, 'x': 15, 'c': 16, 'v': 17, 'b': 18, 'n': 19, 'm': 20
+  };
+  gridElement = document.getElementById("button-grid");
+  gridElement.children[keyMappings[e.key]].click();
+}

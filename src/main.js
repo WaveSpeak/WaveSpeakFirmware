@@ -60,6 +60,16 @@ async function speak(msg) {
   await invoke("say", { text: msg });
 }
 
+async function stop_tts() {
+  await invoke("stopTTS");
+}
+
+function cleanSpeechText(text) {
+  temp = "";
+  temp = text[i].replace(/[0-9]/g, "");
+  return temp + ".";
+}
+
 function speakSayQueue() {
   speak(sayQueue.join(" "));
 }
@@ -85,6 +95,11 @@ function decorateSpecialButton(button) {
     case "clearQueue":
       buttonElement.addEventListener("click", () => {
         clearQueue();
+      })
+      break;
+    case "stop":
+      buttonElement.addEventListener("click", () => {
+        stop_tts();
       })
       break;
     default:

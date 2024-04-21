@@ -43,17 +43,6 @@ unsafe fn get_tts(text: &String) {
     let sink = Sink::try_new(&stream_handle).unwrap();
     let audio = synth.tts(&text);
     let rate = synth.sample_rate();
-    wav::write(
-        wav::Header::new(wav::WAV_FORMAT_IEEE_FLOAT, 1, rate as u32, 32),
-        &wav::BitDepth::ThirtyTwoFloat(audio.clone()),
-        &mut fs::OpenOptions::new()
-            .create(true)
-            .write(true)
-            .open("current.wav")
-            .unwrap(),
-    )
-    .unwrap();
-    // break;
     println!("playing audio at rate {}", rate);
     sink.append(SamplesBuffer::new(1, rate as u32, audio.clone()));
     sink.sleep_until_end();

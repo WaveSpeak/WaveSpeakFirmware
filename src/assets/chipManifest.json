@@ -18424,5 +18424,35 @@
         "speechType" : "",
         "path" : "/assets/chips/actionPlaceholder.png",
         "isSpecial" : true
+    },
+    {
+        "word" : "previousPage",
+        "speechType" : "",
+        "path" : "/assets/chips/actionPlaceholder.png",
+        "isSpecial" : true
+    },
+    {
+        "word" : "nextPage",
+        "speechType" : "",
+        "path" : "/assets/chips/actionPlaceholder.png",
+        "isSpecial" : true
+    },
+    {
+        "word" : "clearQueue",
+        "speechType" : "",
+        "path" : "/assets/chips/actionPlaceholder.png",
+        "isSpecial" : true
+    },
+    {
+        "word" : "speak",
+        "speechType" : "",
+        "path" : "/assets/chips/actionPlaceholder.png",
+        "isSpecial" : true
+    },
+    {
+        "word" : "stop",
+        "speechType" : "",
+        "path" : "/assets/chips/actionPlaceholder.png",
+        "isSpecial" : true
     }
 ]
